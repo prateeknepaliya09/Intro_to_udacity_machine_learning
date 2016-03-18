@@ -32,8 +32,8 @@ print "time for fit  = ", time1, "seconds"
 
 from sklearn import svm
 
-features_train = features_train[:len(features_train)/100] 
-labels_train = labels_train[:len(labels_train)/100] 
+#eatures_train = features_train[:len(features_train)/100] 
+#labels_train = labels_train[:len(labels_train)/100] 
 
 clf = svm.SVC(kernel="rbf", C=10000.00)
 

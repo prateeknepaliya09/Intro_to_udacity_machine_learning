@@ -19,4 +19,9 @@ import pickle
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
-
+count = 0
+for i in enron_data:
+    if(i!= "NaN"):
+        count+=1
+        
+print count        
