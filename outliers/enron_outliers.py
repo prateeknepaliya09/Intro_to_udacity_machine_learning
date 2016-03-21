@@ -14,6 +14,19 @@ data = featureFormat(data_dict, features)
 
 
 ### your code below
+data_dict.pop("TOTAL", 0)
+#if 'TOTAL' in data_dict: del data_dict['TOTAL']
+"""for set in data_dict:
+    while 'TOTAL' in set:
+        set.remove('TOTAL')
+"""
 
+for point in data:
+    salary = point[0]
+    bonus = point[1]
+    matplotlib.pyplot.scatter( salary, bonus )
 
+matplotlib.pyplot.xlabel("salary")
+matplotlib.pyplot.ylabel("bonus")
+matplotlib.pyplot.show()
 
