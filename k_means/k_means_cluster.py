@@ -48,7 +48,7 @@ data_dict.pop("TOTAL", 0)
 ### can be any key in the person-level dictionary (salary, director_fees, etc.) 
 feature_1 = "salary"
 feature_2 = "exercised_stock_options"
-feature_3 = "total_payments"
+#feature_3 = "total_payments"
 poi  = "poi"
 features_list = [poi, feature_1, feature_2 ]
 data = featureFormat(data_dict, features_list)
@@ -60,7 +60,7 @@ poi, finance_features = targetFeatureSplit( data )
 ### for f1, f2, _ in finance_features:
 ### (as it's currently written, the line below assumes 2 features)
 for f1, f2 in finance_features:
-    plt.scatter( f1, f2  )
+    plt.scatter( f1, f2 )
 plt.show()
 
 ### cluster here; create predictions of the cluster labels
@@ -70,12 +70,12 @@ plt.show()
 
 from sklearn.cluster import KMeans #module imported
 
-features_list = ["poi", feature_1, feature_2, feature_3] #data
+features_list = ["poi", feature_1, feature_2] #data
 
 #data2 = featureFormat(data_dict, features_list )
 #poi, finance_features = targetFeatureSplit( data2 )
 
-clf = KMeans(n_clusters=3)  #Classifier for 2 and 3 cluster
+clf = KMeans(n_clusters=2)  #Classifier for 2 and 3 cluster
 
 pred = clf.fit_predict( finance_features )   #prediction 
 
@@ -96,12 +96,32 @@ min_max_scaler = preprocessing.MinMaxScaler(feature_2(0,1000000))
 #min_data = .min_max_scaler(feature_range(0,10000000))
 print min_max_scaler
 
+
+#min max for exercised_stock
+
+stocks = [] 
+for key, value in data_dict.iteritems():
+        
+    if value['exercised_stock_options'] != 'NaN':
+ 
+        stocks.append(value['exercised_stock_options']) 
+ 
+ 
+print min(stocks), max(stocks)
 """
 
-from sklearn.preprocessing import MinMaxScaler
-scaler = MinMaxScaler()
-scaler.fit(finance_features)
-print scaler.transform([200000., 1000000.])
+#min max for salary
+
+stocks = [] 
+for key, value in data_dict.iteritems():
+        
+    if value['salary'] != 'NaN':
+ 
+        stocks.append(value['salary']) 
+ 
+ 
+print min(stocks), max(stocks)
+
 
 
 ### rename the "name" parameter when you change the number of features
