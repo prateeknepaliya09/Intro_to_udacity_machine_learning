@@ -65,14 +65,38 @@ plt.show()
 
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
-from sklearn.cluster import KMeans
-features_list = ["poi", feature_1, feature_2, feature_3]
+
+
+
+from sklearn.cluster import KMeans #module imported
+
+features_list = ["poi", feature_1, feature_2, feature_3] #data
+
 #data2 = featureFormat(data_dict, features_list )
 #poi, finance_features = targetFeatureSplit( data2 )
-clf = KMeans(n_clusters=3)
-pred = clf.fit_predict( finance_features )
+
+clf = KMeans(n_clusters=3)  #Classifier for 2 and 3 cluster
+
+pred = clf.fit_predict( finance_features )   #prediction 
+
+#calling draw with parameters, not hard! definitely
 Draw(pred, finance_features, poi, name="clusters_before_scaling.pdf", f1_name=feature_1, f2_name=feature_2)
 
+
+
+def minmax(data_dict):
+    countt = 0   
+    for mm in data_dict.values():
+        if "exercised_stock_options" != "NaN":
+            countt+=1
+            print min(data_dict.values.exercised_stock_options)
+    #print min(data_dict)
+    #print max(data_dict)
+    print min(data_dict.values().exercised_stock_options)    
+    print countt
+    return 1
+
+minmax(data_dict)
 ### rename the "name" parameter when you change the number of features
 ### so that the figure gets saved to a different file
 try:
