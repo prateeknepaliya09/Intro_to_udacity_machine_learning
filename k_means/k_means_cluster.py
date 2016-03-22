@@ -83,20 +83,27 @@ pred = clf.fit_predict( finance_features )   #prediction
 Draw(pred, finance_features, poi, name="clusters_before_scaling.pdf", f1_name=feature_1, f2_name=feature_2)
 
 
+"""
+#try code for min max 
 
-def minmax(data_dict):
-    countt = 0   
-    for mm in data_dict.values():
-        if "exercised_stock_options" != "NaN":
-            countt+=1
-            print min(data_dict.values.exercised_stock_options)
-    #print min(data_dict)
-    #print max(data_dict)
-    print min(data_dict.values().exercised_stock_options)    
-    print countt
-    return 1
+## for min and max in exercised_stock
+#import operator
+#print max(data_dict.iteritems(), key=operator.itemgetter(1))[0]
 
-minmax(data_dict)
+
+from sklearn import preprocessing
+min_max_scaler = preprocessing.MinMaxScaler(feature_2(0,1000000))
+#min_data = .min_max_scaler(feature_range(0,10000000))
+print min_max_scaler
+
+"""
+
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+scaler.fit(finance_features)
+print scaler.transform([200000., 1000000.])
+
+
 ### rename the "name" parameter when you change the number of features
 ### so that the figure gets saved to a different file
 try:
