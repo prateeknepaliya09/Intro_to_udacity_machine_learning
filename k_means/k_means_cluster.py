@@ -89,14 +89,15 @@ Draw(pred, finance_features, poi, name="clusters_before_scaling.pdf", f1_name=fe
 ## for min and max in exercised_stock
 #import operator
 #print max(data_dict.iteritems(), key=operator.itemgetter(1))[0]
+"""
+
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+scaler.fit(finance_features)
+print scaler.transform([200000., 1000000.])
 
 
-from sklearn import preprocessing
-min_max_scaler = preprocessing.MinMaxScaler(feature_2(0,1000000))
-#min_data = .min_max_scaler(feature_range(0,10000000))
-print min_max_scaler
-
-
+"""
 #min max for exercised_stock
 
 stocks = [] 
@@ -108,10 +109,10 @@ for key, value in data_dict.iteritems():
  
  
 print min(stocks), max(stocks)
+
 """
-
 #min max for salary
-
+"""
 stocks = [] 
 for key, value in data_dict.iteritems():
         
@@ -122,7 +123,7 @@ for key, value in data_dict.iteritems():
  
 print min(stocks), max(stocks)
 
-
+"""
 
 ### rename the "name" parameter when you change the number of features
 ### so that the figure gets saved to a different file
