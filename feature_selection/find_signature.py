@@ -8,8 +8,8 @@ numpy.random.seed(42)
 ### The words (features) and authors (labels), already largely processed.
 ### These files should have been created from the previous (Lesson 10)
 ### mini-project.
-words_file = "../text_learning/word_data.pkl" 
-authors_file = "../text_learning/email_authors.pkl"
+words_file = "../text_learning/word_data_overfit.pkl" 
+authors_file = "../text_learning/email_authors_overfit.pkl"
 word_data = pickle.load( open(words_file, "r"))
 authors = pickle.load( open(authors_file, "r") )
 
@@ -50,3 +50,13 @@ accuracy = accuracy_score(labels_test, pred)
 print accuracy
 #print DecisionTreeClassifier.score()
 
+importance = max(clf.feature_importances_)
+print importance
+
+
+for counter, importance in enumerate(clf.feature_importances_):
+    if importance > 0.2:
+        counter = counter+ 1
+        print "Counter", counter
+        
+print vectorizer.get_feature_names()[clf.feature_importances_.argmax()]        
